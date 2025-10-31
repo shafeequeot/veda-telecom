@@ -1,26 +1,98 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand palette */
+  --vt-sky: #38BDF8; /* Primary */
+  --vt-navy: #1E3A8A; /* Secondary */
+  --vt-gray: #E0F2FE; /* Accent - Light Sky Blue */
+
+  /* Base colors - Default to dark mode */
+  --background: #0b1220;
+  --foreground: #e5e7eb;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-app-sans);
+  --font-heading: var(--font-app-heading);
 }
 
+/* Dark via system preference */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme="light"]) {
+    --background: #0b1220; /* navy-ish */
+    --foreground: #e5e7eb;
   }
+}
+
+/* Dark via explicit toggle - must override system preference */
+[data-theme="dark"],
+[data-theme="dark"] :root,
+html[data-theme="dark"],
+.dark,
+.dark :root,
+html.dark {
+  --background: #0b1220 !important;
+  --foreground: #e5e7eb !important;
+}
+
+/* Light mode override */
+[data-theme="light"],
+[data-theme="light"] :root,
+html[data-theme="light"] {
+  --background: #fafbfc !important;
+  --foreground: #0f172a !important;
+}
+
+html,
+body {
+  height: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Utilities */
+.container-px {
+  @apply px-4 sm:px-6 lg:px-8;
+}
+
+.section {
+  @apply py-12 sm:py-16 lg:py-20;
+}
+
+.card {
+  @apply rounded-xl bg-white shadow-sm ring-1 ring-slate-200/60 transition-all hover:shadow-lg hover:ring-slate-300/60 dark:bg-slate-900/60 dark:ring-slate-800 dark:hover:shadow-xl;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-lg bg-sky-400 px-5 py-2.5 font-semibold text-white shadow-sm transition hover:bg-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-300;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center rounded-lg bg-blue-900 px-5 py-2.5 font-semibold text-white shadow-sm transition hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700;
+}
+
+.muted {
+  @apply text-slate-600 dark:text-slate-400;
+}
+
+.headline {
+  @apply text-2xl sm:text-3xl lg:text-5xl font-semibold tracking-tight text-blue-900;
+  font-family: var(--font-heading), system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+}
+
+.subhead {
+  @apply text-base sm:text-lg text-slate-600;
+}
+
+.headline-gradient {
+  @apply bg-clip-text text-transparent bg-linear-to-r from-sky-400 to-blue-900;
+}
+
+.glass {
+  @apply bg-white/90 backdrop-blur-md ring-1 ring-slate-100/50 shadow-lg dark:bg-slate-900/70 dark:ring-slate-800/50;
 }
