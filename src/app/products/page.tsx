@@ -1,8 +1,9 @@
 import SectionTitle from "@/components/SectionTitle";
-import Card from "@/components/Card";
 import Image from "next/image";
 import type { Metadata } from "next";
 import MotionSection from "@/components/MotionSection";
+import AnimatedProductsSection from "@/components/AnimatedProductsSection";
+import AnimatedProductCard from "@/components/AnimatedProductCard";
 
 export const metadata: Metadata = {
   title: "Products | Veda Telecom FZCO",
@@ -84,29 +85,21 @@ export default function ProductsPage() {
         <Image src="/placeholders/hero-1.svg" alt="Products banner" fill className="object-cover" />
       </div>
 
-      <MotionSection className="section">
+      {/* Brand Logos Section */}
+      <MotionSection className="section bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900">
         <div className="container-px mx-auto">
-          <SectionTitle title="Products" subtitle="Categories: Smartphones, Accessories, Tech Gadgets." />
+          <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-12">OUR PRODUCTS</h2>
+          <AnimatedProductsSection />
+        </div>
+      </MotionSection>
+
+      <MotionSection className="section bg-slate-50">
+        <div className="container-px mx-auto">
+          <SectionTitle title="Product Categories" subtitle="Categories: Smartphones, Accessories, Tech Gadgets." />
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {brands.map((b) => (
-              <Card key={b.name} className="p-6">
-                <h3 className="text-xl font-semibold text-blue-900">{b.name}</h3>
-                <p className="mt-1 text-sm muted">{b.desc}</p>
-                <div className="mt-4 grid grid-cols-3 gap-2">
-                  {b.images.map((img, i) => (
-                    <div key={i} className="relative h-20 w-full overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-800">
-                      <Image 
-                        src={img} 
-                        alt={`${b.name} product ${i + 1}`} 
-                        fill 
-                        className="object-cover"
-                        sizes="(max-width: 768px) 33vw, (max-width: 1200px) 25vw, 20vw"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </Card>
+            {brands.map((b, index) => (
+              <AnimatedProductCard key={b.name} brand={b} index={index} />
             ))}
           </div>
         </div>

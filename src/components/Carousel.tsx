@@ -33,30 +33,42 @@ export default function Carousel({ slides, interval = 5000 }: { slides: Slide[];
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            initial={{ opacity: 0, x: 100, scale: 0.9 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: -100, scale: 0.9 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="mx-auto max-w-3xl"
           >
-            <h1 className="text-3xl sm:text-5xl font-semibold text-white drop-shadow">
+            <motion.h1 
+              className="text-3xl sm:text-5xl font-semibold text-white drop-shadow"
+              initial={{ y: 20 }}
+              animate={{ y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+            >
               {current.title}
-            </h1>
-            <p className="mt-4 text-white/90 text-base sm:text-lg">
+            </motion.h1>
+            <motion.p 
+              className="mt-4 text-white/90 text-base sm:text-lg"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
               {current.subtitle}
-            </p>
+            </motion.p>
           </motion.div>
         </AnimatePresence>
       </div>
       <div className="absolute bottom-4 left-0 right-0 flex items-center justify-center gap-2">
         {slides.map((_, i) => (
-          <button
+          <motion.button
             key={i}
             aria-label={`Go to slide ${i + 1}`}
             onClick={() => setIndex(i)}
-            className={`h-2.5 w-2.5 rounded-full transition ${i === index ? "bg-white" : "bg-white/50"}`}
-          />)
-        )}
+            whileHover={{ scale: 1.3 }}
+            whileTap={{ scale: 0.9 }}
+            className={`h-2.5 w-2.5 rounded-full transition-all ${i === index ? "bg-white w-8" : "bg-white/50"}`}
+          />
+        ))}
       </div>
     </div>
   );

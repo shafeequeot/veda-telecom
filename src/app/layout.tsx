@@ -3,6 +3,7 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ScrollProgress";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -64,7 +65,7 @@ export default function RootLayout({
     url: "https://www.vedatelecomfzco.com",
     logo: "https://www.vedatelecomfzco.com/logo.png",
     telephone: "+97143536660",
-    email: "finance@veda-telecom.com",
+    email: "Operations@veda-telecom.com",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Office No 333, 4WA, Dubai Airport Freezone (DAFZA)",
@@ -83,16 +84,17 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  // Force dark mode always
-                  document.documentElement.dataset.theme = 'dark';
-                  document.documentElement.classList.add('dark');
-                  // Remove any light theme preference
-                  localStorage.removeItem('theme');
+                  // Force light mode always
+                  document.documentElement.dataset.theme = 'light';
+                  document.documentElement.classList.remove('dark');
+                  // Remove any dark theme preference
+                  localStorage.setItem('theme', 'light');
                 } catch (e) {}
               })();
             `,
           }}
         />
+        <ScrollProgress />
         <Navbar />
         <main>{children}</main>
         <Footer />

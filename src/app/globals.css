@@ -6,9 +6,9 @@
   --vt-navy: #1E3A8A; /* Secondary */
   --vt-gray: #E0F2FE; /* Accent - Light Sky Blue */
 
-  /* Base colors - Default to dark mode */
-  --background: #0b1220;
-  --foreground: #e5e7eb;
+  /* Base colors - Default to light mode */
+  --background: #fafbfc;
+  --foreground: #0f172a;
 }
 
 @theme inline {
@@ -18,31 +18,34 @@
   --font-heading: var(--font-app-heading);
 }
 
-/* Dark via system preference */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --background: #0b1220; /* navy-ish */
-    --foreground: #e5e7eb;
-  }
-}
-
-/* Dark via explicit toggle - must override system preference */
-[data-theme="dark"],
-[data-theme="dark"] :root,
-html[data-theme="dark"],
-.dark,
-.dark :root,
-html.dark {
-  --background: #0b1220 !important;
-  --foreground: #e5e7eb !important;
-}
-
-/* Light mode override */
-[data-theme="light"],
-[data-theme="light"] :root,
-html[data-theme="light"] {
+/* Force light mode always */
+:root,
+html,
+body {
   --background: #fafbfc !important;
   --foreground: #0f172a !important;
+}
+
+/* Light mode override - ensure it's always applied */
+[data-theme="light"],
+[data-theme="light"] :root,
+html[data-theme="light"],
+html:not([data-theme]),
+html[data-theme=""] {
+  --background: #fafbfc !important;
+  --foreground: #0f172a !important;
+}
+
+/* Dark mode should not be applied */
+[data-theme="dark"],
+.dark,
+html.dark {
+  --background: #fafbfc !important;
+  --foreground: #0f172a !important;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 html,
@@ -53,6 +56,7 @@ body {
 body {
   background: var(--background);
   color: var(--foreground);
+  overflow-x: hidden;
 }
 
 /* Utilities */
@@ -65,19 +69,19 @@ body {
 }
 
 .card {
-  @apply rounded-xl bg-white shadow-sm ring-1 ring-slate-200/60 transition-all hover:shadow-lg hover:ring-slate-300/60 dark:bg-slate-900/60 dark:ring-slate-800 dark:hover:shadow-xl;
+  @apply rounded-xl bg-white shadow-sm ring-1 ring-slate-200/60 transition-all duration-300 hover:shadow-lg hover:ring-slate-300/60 hover:scale-[1.02];
 }
 
 .btn-primary {
-  @apply inline-flex items-center justify-center rounded-lg bg-sky-400 px-5 py-2.5 font-semibold text-white shadow-sm transition hover:bg-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-300;
+  @apply inline-flex items-center justify-center rounded-lg bg-sky-400 px-5 py-2.5 font-semibold text-white shadow-sm transition-all duration-300 hover:bg-sky-500 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-sky-300;
 }
 
 .btn-secondary {
-  @apply inline-flex items-center justify-center rounded-lg bg-blue-900 px-5 py-2.5 font-semibold text-white shadow-sm transition hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700;
+  @apply inline-flex items-center justify-center rounded-lg bg-blue-900 px-5 py-2.5 font-semibold text-white shadow-sm transition-all duration-300 hover:bg-blue-800 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-700;
 }
 
 .muted {
-  @apply text-slate-600 dark:text-slate-400;
+  @apply text-slate-600;
 }
 
 .headline {
@@ -94,5 +98,5 @@ body {
 }
 
 .glass {
-  @apply bg-white/90 backdrop-blur-md ring-1 ring-slate-100/50 shadow-lg dark:bg-slate-900/70 dark:ring-slate-800/50;
+  @apply bg-white/90 backdrop-blur-md ring-1 ring-slate-100/50 shadow-lg ;
 }
