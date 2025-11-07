@@ -24,7 +24,7 @@ export default function Home() {
       image: "/placeholders/home cover-01.jpg",
     },
     {
-      title: "Global Distributor of Mobile Phones & Gadgets",
+      title: "Dubai-Based Telecom Trading Experts",
       subtitle: "Trusted partner for the world’s most loved brands.",
       image: "/placeholders/home cover-02.jpg",
     },
@@ -108,7 +108,7 @@ export default function Home() {
           <BlobBackground />
           <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
             <div>
-              <h2 className="headline headline-gradient">Global Distributor of Tech & Mobility</h2>
+              <h2 className="headline headline-gradient">Dubai Telecom Trading Specialists</h2>
               <p className="subhead mt-3 max-w-xl text-slate-700">
                 Veda Telecom FZCO is your trusted partner for smartphones, accessories, and cutting-edge tech gadgets. Headquartered in Dubai with strategic hubs across Asia and the Middle East, we deliver reliable supply chains and competitive pricing to partners worldwide. With over 22 years of combined industry experience, we specialize in wholesale distribution of leading electronics brands, ensuring on-time delivery and exceptional customer service.
               </p>
@@ -156,7 +156,7 @@ export default function Home() {
       {/* Mission & Vision Section */}
       <MotionSection className="section">
         <div className="container-px mx-auto">
-          <SectionTitle title="Mission & Vision" subtitle="Our commitment to empowering partners and becoming the most trusted global distributor." />
+          <SectionTitle title="Mission & Vision" subtitle="Veda Telecom FZCO is a Dubai-based telecom trading company specializing in the import and distribution of high-quality telecommunications and electronics." />
           <MissionVisionSection />
         </div>
       </MotionSection>
