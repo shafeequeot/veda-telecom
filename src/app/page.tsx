@@ -143,7 +143,7 @@ export default function Home() {
           <div>
             <SectionTitle
               title="About Veda Telecom"
-              subtitle="Veda Telecom FZCO is a premier global distributor headquartered in Dubai, delivering smartphones, accessories, and tech gadgets to partners worldwide. We combine deep industry expertise with extensive logistics networks to provide seamless supply chain solutions. Our commitment to quality, reliability, and competitive pricing makes us the preferred choice for retailers, wholesalers, and e-commerce platforms across 40+ markets."
+              subtitle="Veda Telecom FZCO is a Dubai-based telecom trading company specializing in the import and distribution of high-quality telecommunications and electronics. Our expert team leverages local market knowledge and reliable logistics to deliver trusted products and solutions to our business partners. With a strong commitment to quality, reliability, and competitive pricing, we support retailers, wholesalers, and e-commerce platforms throughout the region."
             />
             <Link href="/about" className="btn-secondary">Learn More</Link>
           </div>
