@@ -69,13 +69,24 @@ export default function Home() {
         {/* Content */}
         <div className="relative z-10 container-px mx-auto text-center px-4">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-4xl mx-auto"
           >
             {/* Logo */}
-            <div className="mb-8 flex justify-center">
+            <motion.div 
+              className="mb-8 flex justify-center"
+              initial={{ opacity: 0, scale: 0.8, y: -20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ 
+                duration: 0.8, 
+                delay: 0.2,
+                ease: [0.34, 1.56, 0.64, 1],
+                type: "spring",
+                stiffness: 100
+              }}
+            >
               <Image 
                 src="/Veda logo-02.svg" 
                 alt="Veda Telecom FZCO" 
@@ -83,22 +94,42 @@ export default function Home() {
                 height={60}
                 className="opacity-95"
               />
-            </div>
+            </motion.div>
             
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+            <motion.h1 
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight"
+              initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ 
+                duration: 1,
+                delay: 0.4,
+                ease: [0.16, 1, 0.3, 1]
+              }}
+            >
               Electronics wholesale from Dubai
-            </h1>
+            </motion.h1>
             
             {/* CTA Button */}
-            <div className="mt-8">
+            <motion.div 
+              className="mt-8"
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ 
+                duration: 0.8,
+                delay: 0.7,
+                ease: [0.34, 1.56, 0.64, 1],
+                type: "spring",
+                stiffness: 120
+              }}
+            >
               <Link 
                 href="/contact"
                 className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-cyan-400 to-teal-500 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:shadow-xl hover:scale-105 active:scale-95"
               >
                 Request stock
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -120,12 +151,36 @@ export default function Home() {
                 {[{k:"+60", v:"Brands"}, {k:"+40", v:"Markets"}, {k:"99%", v:"On-time"}].map((s, idx) => (
                   <motion.div 
                     key={s.v} 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                    initial={{ opacity: 0, y: 30, scale: 0.9, rotateX: -15 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ 
+                      duration: 0.6, 
+                      delay: idx * 0.15,
+                      ease: [0.16, 1, 0.3, 1],
+                      type: "spring",
+                      stiffness: 100
+                    }}
+                    whileHover={{ 
+                      y: -5, 
+                      scale: 1.05,
+                      transition: { duration: 0.3 }
+                    }}
                     className="rounded-xl bg-white/80 backdrop-blur-sm p-4 ring-1 ring-slate-200/60 shadow-sm hover:shadow-md transition-all"
                   >
-                    <div className="text-2xl font-semibold text-blue-900">{s.k}</div>
+                    <motion.div 
+                      className="text-2xl font-semibold text-blue-900"
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ 
+                        delay: idx * 0.15 + 0.3,
+                        type: "spring",
+                        stiffness: 200
+                      }}
+                    >
+                      {s.k}
+                    </motion.div>
                     <div className="text-xs muted">{s.v}</div>
                   </motion.div>
                 ))}
@@ -204,14 +259,41 @@ export default function Home() {
             }].map((s, idx) => (
               <motion.div
                 key={s.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                initial={{ opacity: 0, y: 40, scale: 0.95, rotateY: -5 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1, rotateY: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ 
+                  duration: 0.7, 
+                  delay: idx * 0.12,
+                  ease: [0.16, 1, 0.3, 1],
+                  type: "spring",
+                  stiffness: 100
+                }}
+                whileHover={{ 
+                  y: -8, 
+                  scale: 1.02,
+                  transition: { duration: 0.3 }
+                }}
               >
                 <Card className="p-6 bg-white hover:bg-sky-50 transition-colors">
-                  <h3 className="font-semibold text-blue-900">{s.title}</h3>
-                  <p className="mt-2 text-sm muted">{s.desc}</p>
+                  <motion.h3 
+                    className="font-semibold text-blue-900"
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.12 + 0.2 }}
+                  >
+                    {s.title}
+                  </motion.h3>
+                  <motion.p 
+                    className="mt-2 text-sm muted"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.12 + 0.3 }}
+                  >
+                    {s.desc}
+                  </motion.p>
                 </Card>
               </motion.div>
             ))}
@@ -243,14 +325,51 @@ export default function Home() {
             ].map((i, idx) => (
               <motion.div
                 key={i.title}
-                initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                initial={{ 
+                  opacity: 0, 
+                  x: idx % 2 === 0 ? -50 : 50,
+                  scale: 0.9,
+                  filter: "blur(4px)"
+                }}
+                whileInView={{ 
+                  opacity: 1, 
+                  x: 0,
+                  scale: 1,
+                  filter: "blur(0px)"
+                }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: idx * 0.12,
+                  ease: [0.16, 1, 0.3, 1],
+                  type: "spring",
+                  stiffness: 90
+                }}
+                whileHover={{ 
+                  x: idx % 2 === 0 ? -5 : 5,
+                  scale: 1.03,
+                  transition: { duration: 0.3 }
+                }}
               >
                 <Card className="p-6 hover:border-sky-400 transition-colors">
-                  <h3 className="font-semibold text-blue-900">{i.title}</h3>
-                  <p className="mt-2 text-sm muted">{i.desc}</p>
+                  <motion.h3 
+                    className="font-semibold text-blue-900"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.12 + 0.25 }}
+                  >
+                    {i.title}
+                  </motion.h3>
+                  <motion.p 
+                    className="mt-2 text-sm muted"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.12 + 0.35 }}
+                  >
+                    {i.desc}
+                  </motion.p>
                 </Card>
               </motion.div>
             ))}
@@ -273,20 +392,63 @@ export default function Home() {
             {["Business Integrity", "Customer-Centric", "Global Network", "Competitive Pricing"].map((t, idx) => (
               <motion.div
                 key={t}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                whileHover={{ scale: 1.05, y: -5 }}
+                initial={{ opacity: 0, scale: 0.85, y: 30, rotateX: 10 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ 
+                  duration: 0.7, 
+                  delay: idx * 0.12,
+                  ease: [0.16, 1, 0.3, 1],
+                  type: "spring",
+                  stiffness: 110
+                }}
+                whileHover={{ 
+                  scale: 1.05, 
+                  y: -8,
+                  rotateY: 2,
+                  transition: { duration: 0.3 }
+                }}
               >
                 <Card className="p-6 bg-white hover:bg-gradient-to-br hover:from-sky-50 hover:to-blue-50 transition-all">
                   <motion.div 
                     className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-sky-100 text-sky-600"
-                    animate={{ rotate: [0, 10, -10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                  >★</motion.div>
-                  <h3 className="font-semibold text-blue-900">{t}</h3>
-                  <p className="mt-2 text-sm muted">We prioritize trust, service, reach, and value in every engagement.</p>
+                    initial={{ scale: 0, rotate: -180 }}
+                    whileInView={{ scale: 1, rotate: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ 
+                      delay: idx * 0.12 + 0.2,
+                      type: "spring",
+                      stiffness: 200
+                    }}
+                  >
+                    <motion.span
+                      animate={{ rotate: [0, 10, -10, 0] }}
+                      transition={{ 
+                        duration: 2, 
+                        repeat: Infinity, 
+                        repeatDelay: 3,
+                        delay: idx * 0.12 + 0.5
+                      }}
+                    >★</motion.span>
+                  </motion.div>
+                  <motion.h3 
+                    className="font-semibold text-blue-900"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.12 + 0.3 }}
+                  >
+                    {t}
+                  </motion.h3>
+                  <motion.p 
+                    className="mt-2 text-sm muted"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.12 + 0.4 }}
+                  >
+                    We prioritize trust, service, reach, and value in every engagement.
+                  </motion.p>
                 </Card>
               </motion.div>
             ))}
@@ -309,24 +471,50 @@ export default function Home() {
             {[{ city: "Dubai" , image: 'Dubai.avif'}, { city: "Hong Kong", image: 'Hong Kong.jpg' }, { city: "Singapore", image: 'Singapore.jpg' }].map((l, idx) => (
               <motion.div
                 key={l.city}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.15 }}
-                whileHover={{ y: -10, scale: 1.02 }}
+                initial={{ opacity: 0, y: 60, scale: 0.9, rotateY: -15 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1, rotateY: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: idx * 0.18,
+                  ease: [0.16, 1, 0.3, 1],
+                  type: "spring",
+                  stiffness: 100
+                }}
+                whileHover={{ 
+                  y: -12, 
+                  scale: 1.03,
+                  rotateY: 2,
+                  transition: { duration: 0.4 }
+                }}
                 className="overflow-hidden rounded-xl ring-1 ring-slate-200 shadow-lg hover:shadow-2xl transition-all"
               >
                 <div className="relative h-44 w-full bg-white overflow-hidden">
                   <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.5 }}
+                    initial={{ scale: 1.1 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.15 }}
+                    transition={{ 
+                      delay: idx * 0.18 + 0.3, 
+                      duration: 0.6
+                    }}
+                    style={{
+                      transition: "transform 0.5s ease-out"
+                    }}
                   >
                     <Image src={`/placeholders/${l.image}`} alt={`${l.city} office`} fill className="object-cover" />
                   </motion.div>
                 </div>
-                <div className="p-4 bg-white">
+                <motion.div 
+                  className="p-4 bg-white"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.18 + 0.4 }}
+                >
                   <p className="font-semibold text-blue-900">{l.city}</p>
-                </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>
