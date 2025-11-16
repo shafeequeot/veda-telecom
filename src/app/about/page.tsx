@@ -19,14 +19,14 @@ export const metadata: Metadata = {
 };
 
 const team = [
-  "Vivek",
-  "Shakeel",
-  "Abhishek",
-  "Manoj",
-  "Shamly",
-  "Hari",
-  "Ajay",
-  "Suraj",
+  "Vivek Narasimhan",
+  "Abhishek Ranjan",
+  "Shakil Salauddin",
+  "Harihar Kandel",
+  "Ajay sagar",
+  "Suraj Bisht",
+  "Manoj Bisht",
+  "Shalmy Joseph",
 ];
 
 export default function AboutPage() {

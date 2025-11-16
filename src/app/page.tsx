@@ -125,7 +125,7 @@ export default function Home() {
             >
               <Link 
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-cyan-400 to-teal-500 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:shadow-xl hover:scale-105 active:scale-95"
+                className="inline-flex items-center justify-center rounded-lg bg-linear-to-r from-cyan-400 to-teal-500 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:shadow-xl hover:scale-105 active:scale-95"
               >
                 Request stock
               </Link>
@@ -240,7 +240,7 @@ export default function Home() {
         </div>
       </MotionSection>
 
-      <MotionSection className="section bg-gradient-to-br from-slate-400 via-slate-200 to-slate-500">
+      <MotionSection className="section bg-linear-to-br from-slate-400 via-slate-200 to-slate-500">
         <div className="container-px mx-auto">
           <SectionTitle title="Services" subtitle="Comprehensive end-to-end distribution services designed to power your business growth. From sourcing and procurement to logistics and after-sales support, we handle every aspect of your supply chain needs." />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -385,7 +385,7 @@ export default function Home() {
         </div>
       </MotionSection>
 
-      <MotionSection className="section bg-gradient-to-br from-slate-400 via-slate-300 to-slate-500">
+      <MotionSection className="section bg-linear-to-br from-slate-400 via-slate-300 to-slate-500">
         <div className="container-px mx-auto">
           <SectionTitle title="Why Choose Us" subtitle="We stand out through our commitment to quality products, reliable supply chains, and truly global reach. Our 22 years of combined experience, strategic location in Dubai, and partnerships with leading brands make us the ideal distribution partner." />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -409,7 +409,7 @@ export default function Home() {
                   transition: { duration: 0.3 }
                 }}
               >
-                <Card className="p-6 bg-white hover:bg-gradient-to-br hover:from-sky-50 hover:to-blue-50 transition-all">
+                <Card className="p-6 bg-white hover:bg-linear-to-br hover:from-sky-50 hover:to-blue-50 transition-all">
                   <motion.div 
                     className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-sky-100 text-sky-600"
                     initial={{ scale: 0, rotate: -180 }}
@@ -464,7 +464,7 @@ export default function Home() {
         </div>
       </MotionSection>
 
-      <section className="section">
+      <MotionSection className="section">
         <div className="container-px mx-auto">
           <SectionTitle title="Global Presence" subtitle="Our strategic hubs in Dubai, Hong Kong, and Singapore connect markets across continents, enabling fast and efficient distribution to partners worldwide. Each location is optimized for regional logistics and market access." />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -519,7 +519,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </MotionSection>
 
       {/* Contact Preview Section */}
       <MotionSection className="section">
